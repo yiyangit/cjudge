@@ -69,6 +69,6 @@ module.exports={
 
 另外哪个懂的大佬和我研究研究怎么实现安全问题呀
 ## Bug
-暂未发现
+不能限制内存
 ## 联系我
 Luogu 账号: yiyangit
