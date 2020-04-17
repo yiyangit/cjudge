@@ -1,6 +1,4 @@
 var fs= require("fs")
-var eventproxy = require('eventproxy');
-var EP=new eventproxy;
 const { exec }=require('child_process');
 const { execSync }=require('child_process');
 var lang_commands=require('./lang_commands.js');
