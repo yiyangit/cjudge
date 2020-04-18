@@ -2,6 +2,8 @@ var fs= require("fs")
 const { exec }=require('child_process');
 const { execSync }=require('child_process');
 var lang_commands=require('./lang_commands.js');
+checkers={};
+require("./checkers.js");
 const args = process.argv.reduce((a, b, index) => {
   if (/^[^=]*=[^=]*$/.test(b)) {
     const arr = b.split('=')
@@ -9,13 +11,6 @@ const args = process.argv.reduce((a, b, index) => {
   }
   return a;
 }, {})
-var checkers={};
-checkers.IgnoreSpace=function(A,B){
-	function trim(str) {
-    	return str.replace(/^(\s|\u00A0)+/, '').replace(/(\s|\u00A0)+$/, '');
- 	}
- 	return trim(A)==trim(B);
-}
 //---------------------------------------------
 const datadir="./data/";
 const tempdir="./temp/";
@@ -70,12 +65,16 @@ var _=0;
         					hd();
         					return;
         				}
-        				if(checker(stdout.toString(),fs.readFileSync(ansF).toString())){
+        				var result=checker(stdout.toString(),fs.readFileSync(ansF).toString());
+        				if(result==100){
         				    score+=probcfg.score[i-1];
         					console.log('Test '+i+' : AC');
+        				}else if(result==0){
+        					console.log('Test '+i+' : WA');
         				}
         				else{
-        					console.log('Test '+i+' : WA');
+        					score+=probcfg.score[i-1]*(result/100);
+        					console.log('Test '+i+' : PC '+probcfg.score[i-1]*(result/100));
         				}
         				hd();
         			}
