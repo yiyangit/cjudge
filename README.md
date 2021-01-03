@@ -62,8 +62,8 @@ module.exports={
     'cpp':['g++ <code> -o <program>','<program>'],
     'java':['javac <code> <program>','java <program>']
 }
-其他语言同理。
 ```
+其他语言同理。
 ## 安全问题
 **没有任何防护措施**所以请勿在不加修改的情况下用作OJ评测机
 
@@ -74,4 +74,4 @@ module.exports={
 * 不支持subtask
 * 不能自定义checker
 ## 联系我
-Luogu 账号: yiyangit
+Luogu 账号: lndlay
